@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/nav_buttons.dart';
+import 'package:portfolio/widgets/outline_button.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -33,23 +35,37 @@ class _NavBarState extends State<NavBar> {
             screenWidth > 600 // Show full nav items on wider screens
                 ? Row(
                     children: [
-                      _buildNavButton("Home", 0),
+                      NavButtons(text: "Portfolio", index: 0, onTap: (index){
+                        setState(() {
+                          activeIndex = index;
+                        });
+                      }, activeIndex: activeIndex),
                       const SizedBox(width: 20),
-                      _buildNavButton("Services", 1),
+                      NavButtons(text: "About", index: 1, onTap: (index){
+                        setState(() {
+                          activeIndex = index;
+                        });
+                      }, activeIndex: activeIndex),
                       const SizedBox(width: 20),
-                      _buildNavButton("Work", 2),
+                     NavButtons(text: "Skills", index: 2, onTap: (index){
+                        setState(() {
+                          activeIndex = index;
+                        });
+                      }, activeIndex: activeIndex),
                       const SizedBox(width: 20),
-                      _buildNavButton("About", 3),
+                     NavButtons(text: "Projects", index: 3, onTap: (index){
+                        setState(() {
+                          activeIndex = index;
+                        });
+                      }, activeIndex: activeIndex),
                       const SizedBox(width: 20),
-                      _buildNavButton("Blog", 4),
-                      const SizedBox(width: 20),
-                      _outlineButton(() {}, "Contact"),
+                     OutlineButtonWidget(onPressed: (){}, text: "Contact Us"),
                     ],
                   )
                 : IconButton(
                     icon: Icon(Icons.menu, color: Colors.white),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+                      Scaffold.of(context).openEndDrawer();
                     },
                   ),
           ],
@@ -57,52 +73,6 @@ class _NavBarState extends State<NavBar> {
       ),
     );
   }
-
-  Widget _buildNavButton(String text, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          activeIndex = index;
-        });
-      },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            text,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: activeIndex == index ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            height: 2,
-            width: activeIndex == index ? 30 : 0,
-            margin: const EdgeInsets.only(top: 4),
-            decoration: BoxDecoration(
-              color: activeIndex == index ? Colors.blue : Colors.transparent,
-              borderRadius: BorderRadius.circular(1),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _outlineButton(void Function()? onPressed, String text) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(color: Colors.white),
-      ),
-      style: OutlinedButton.styleFrom(
-        side: BorderSide(color: Colors.blue), // Border color
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), // Border radius
-        ),
-      ),
-    );
-  }
 }
+
+
