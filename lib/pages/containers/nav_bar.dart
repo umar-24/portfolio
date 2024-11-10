@@ -59,7 +59,7 @@ class _NavBarState extends State<NavBar> {
                         });
                       }, activeIndex: activeIndex),
                       const SizedBox(width: 20),
-                     OutlineButtonWidget(onPressed: (){}, text: "Contact Us"),
+                     OutlineButtonWidget(onPressed: (){}, text: "Contact Me"),
                     ],
                   )
                 : IconButton(

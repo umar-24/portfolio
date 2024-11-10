@@ -16,10 +16,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      // appBar: AppBar(),
       endDrawer: MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: const [
+            SizedBox(height: 40,),
             NavBar(),
             HeaderContainer()
           ],

@@ -20,7 +20,7 @@ class _MyDrawerState extends State<MyDrawer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 70),
            NavButtons(text: "Portfolio", index: 0, onTap: (index){
                         setState(() {
                           activeIndex = index;

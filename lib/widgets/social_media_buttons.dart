@@ -72,7 +72,7 @@ class _SocialMediaRowState extends State<SocialMediaRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildSocialButton(
           imagePath: github,
